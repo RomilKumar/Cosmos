@@ -1,6 +1,3 @@
 # Cosmos
 Guardians of the galaxy
-
-
-serever created and database connected successfully.
-and User model is also created
+A Full Stack Application based on the theme Cosmos and Space
