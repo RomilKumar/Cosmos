@@ -1,9 +1,28 @@
 import { User } from "../models/user.model.js";
 
-// Define routes here or in separate route files
-const home =async (req, res) => {
-  res.send("Hello World!");
-};
+const getUser = ()=>{
+
+}
+
+const login = () => {
+
+}
+
+const register = ()=>{
+
+}
+
+const logout = ()=>{
+
+}
+
+const deleteAccount = ()=>{
+
+}
+
+const getChannelProfile = ()=>{
+
+}
 
 const sampleUser =  async (req, res) => {
   let sampleuser = new User({
@@ -17,7 +36,12 @@ console.log(sampleuser);
 res.send(sampleuser);
 };
 
-export {
-    home, 
-    sampleUser
+export { 
+    sampleUser,
+    getUser,
+    login,
+    register,
+    logout,
+    deleteAccount,
+    getChannelProfile,
 }
