@@ -4,6 +4,7 @@ import { app } from "./app.js";
 import { dbConnection } from "./db/dbConnection.js";
 
 const port = process.env.PORT;
+
 dbConnection();
 
 app.listen(port, () => {
