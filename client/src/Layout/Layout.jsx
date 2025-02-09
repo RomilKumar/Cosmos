@@ -3,7 +3,7 @@ import Footer from './Footer'
 import { Outlet } from 'react-router-dom'
 
 
-function App() {
+function Layout() {
   return (
     <>
       <Header/>
@@ -13,4 +13,4 @@ function App() {
   )
 }
 
-export default App
+export default Layout
