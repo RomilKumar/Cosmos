@@ -6,9 +6,9 @@ export default function Sidebar() {
         setShowSidebar(!showSidebar);
     };
     return (
-        <>
+        <div className="absolute left-0 w-[20%] top-0 h-full">
             {showSidebar ? (
-                <div className="absolute left-0 w-[20%] bg-green-200 h-full">
+                <div className="bg-green-200 h-full">
                     Sidebar
                 <button
                 className="bg-black text-white"
@@ -19,12 +19,12 @@ export default function Sidebar() {
             </div>
             ) : (
                 <button
-                    className="bg-black z-10 absolute text-white"
+                    className="bg-black text-white"
                     onClick={handleClick}
                 >
                     icon
                 </button>
             )}
-        </>
+        </div>
     );
 }

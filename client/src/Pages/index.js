@@ -4,6 +4,7 @@ import HomePage from "./HomePage.jsx";
 import LoginPage from "./LoginPage.jsx";
 import RegisterPage from "./RegisterPage.jsx";
 import SupportPage from "./SupportPage.jsx";
+import ServerErrorPage from "./ServerErrorPage.jsx";
 
 export {
     AboutPage,
@@ -12,4 +13,5 @@ export {
     LoginPage,
     RegisterPage,
     SupportPage,
+    ServerErrorPage,
 }
