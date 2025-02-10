@@ -9,7 +9,7 @@ const userSchema = new Schema({
     },
     firstname:{
         type: String,
-        required: true,
+        
     },
     lastname: {
         type: String,
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        required: true,
+        default: Date.now,
     }
 });
 
