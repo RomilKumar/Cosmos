@@ -9,49 +9,49 @@ export default function Header() {
             {/* Center section for navigation items */}
             <nav className="flex space-x-4 h-full items-center">
                 <a
-                    href="#home"
+                    href="Home"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
                 >
                     Home
                 </a>
                 <a
-                    href="#about"
+                    href="about"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
                 >
                     About
                 </a>
                 <a
-                    href="#gallery"
+                    href="gallery"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
                 >
                     Gallery
                 </a>
                 <a
-                    href="#news"
+                    href="news"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
                 >
                     News
                 </a>
                 <a
-                    href="#blogs"
+                    href="blogs"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
                 >
                     Blogs
                 </a>
                 <a
-                    href="#upcoming-projects"
+                    href="upcoming-projects"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
                 >
                     Upcoming Projects
                 </a>
                 <a
-                    href="#contact-us"
+                    href="contact-us"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
                 >
                     Contact Us
                 </a>
                 <a
-                    href="#social-media"
+                    href="social-media"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
                 >
                     Social Media
