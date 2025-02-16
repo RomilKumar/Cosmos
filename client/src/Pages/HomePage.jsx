@@ -1,4 +1,10 @@
-export default function HomePage(){
-    return <div className="text-5xl flex justify-center items-center h-full"> HOMEPAGE</div>
-}
 
+
+export default function HomePage() {
+  return (
+    <div className="home">
+      <h1>Home Page</h1>
+      
+    </div>
+  );
+}
