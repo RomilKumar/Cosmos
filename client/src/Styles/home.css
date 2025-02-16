@@ -1,0 +1,48 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure body takes full height */
+  html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header Styling */
+  .header {
+    background-color: #facc15; /* Yellow shade */
+    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Footer Styling */
+  .footer {
+    background-color: #facc15; /* Same as header */
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Video Container */
+  .video-container {
+    flex: 1; /* Takes all available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e3a8a; /* Dark Blue */
+  }
+  
+  /* Video Styling */
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures full coverage */
+  }
+  

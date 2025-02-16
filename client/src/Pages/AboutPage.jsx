@@ -1,5 +1,11 @@
+
+
 export default function AboutPage() {
   return (
-    <div>AboutPage</div>
-  )
+    <div class="Support">
+       AboutPage
+    </div>
+
+  );
 }
+

@@ -1,5 +1,11 @@
-export default function SupportPage() {
+
+
+export default function supportPage() {
   return (
-    <div>SupportPage</div>
-  )
+    <div class="Support">
+      Support Page
+      
+    </div>
+
+  );
 }
