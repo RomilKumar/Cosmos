@@ -48,6 +48,10 @@ export default function Login() {
         }
     };
 
+    const handleBlur=()=>{
+        //do something
+    }
+
     const inputFields = [
         {
             type: "text",
@@ -83,6 +87,7 @@ export default function Login() {
                 name={field.name}
                 id={field.id}
                 placeholder={field.placeholder}
+                onBlur={handleBlur}
                 onChange={handleChange}
                 required={field.required}
                 className="outline-none border-1 border-gray-700 p-2 rounded-md"
