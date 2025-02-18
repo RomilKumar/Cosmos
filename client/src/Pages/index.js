@@ -5,6 +5,10 @@ import LoginPage from "./LoginPage.jsx";
 import RegisterPage from "./RegisterPage.jsx";
 import SupportPage from "./SupportPage.jsx";
 import ServerErrorPage from "./ServerErrorPage.jsx";
+import BlogPage from "./BlogPage.jsx";
+import NewsPage from "./NewsPage.jsx";
+import GalleryPage from "./GalleryPage.jsx";
+import UpcomingprojectsPage from "./UpcomingprojectsPage.jsx";
 
 export {
     AboutPage,
@@ -14,4 +18,8 @@ export {
     RegisterPage,
     SupportPage,
     ServerErrorPage,
+    BlogPage,
+    NewsPage,
+    GalleryPage,
+    UpcomingprojectsPage
 }
