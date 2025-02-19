@@ -16,6 +16,10 @@ import {
     RegisterPage,
     SupportPage,
     ServerErrorPage,
+    NewsPage,
+    BlogPage,
+    GalleryPage,
+    UpcomingprojectsPage,
 } from "./Pages/index.js";
 
 //Components to be written now!!!
@@ -29,6 +33,10 @@ const router = createBrowserRouter(
             <Route path="about" element={<AboutPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="server-error" element={<ServerErrorPage />} />
+            <Route path="news" element={<NewsPage />} />
+            <Route path="blogs" element={<BlogPage />} />
+            <Route path="gallery" element={<GalleryPage />} />
+            <Route path="upcoming-projects" element={<UpcomingprojectsPage />} />
         </Route>
     )
 );

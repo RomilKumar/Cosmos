@@ -48,6 +48,10 @@ export default function Login() {
         }
     };
 
+    const handleBlur=()=>{
+        //do something
+    }
+
     const inputFields = [
         {
             type: "text",
@@ -72,9 +76,9 @@ export default function Login() {
             <div className="relative">
                 <label
                     htmlFor={field.name}
-                    className="absolute -top-2 left-2 text-sm bg-gray-900 px-1 text-purple-300"
+                    className="absolute -top-2 left-2 text-sm bg-blue-100 px-1"
                 >
-                    {field.required && <span className="text-pink-500">*</span>}
+                    {field.required && <span className="text-red-600">*</span>}
                     {field.label}
                 </label>
             </div>
@@ -83,23 +87,21 @@ export default function Login() {
                 name={field.name}
                 id={field.id}
                 placeholder={field.placeholder}
+                onBlur={handleBlur}
                 onChange={handleChange}
                 required={field.required}
-                className="w-full outline-none border-2 border-pink-500 bg-gray-900 text-purple-200 p-2 rounded-md 
-                focus:border-pink-500 focus:bg-gray-700 focus:ring-0 focus:shadow-md transition-all"
+                className="outline-none border-1 border-gray-700 p-2 rounded-md"
             />
-
-
-            {error && <div className="text-pink-500 text-sm mt-1">{error}</div>}
+            {error && <div className="text-red-600 text-sm">{error}</div>}
         </div>
     ));
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
+        <div>
             <form
                 method="POST"
                 onSubmit={handleSubmit}
-                className="bg-gray-800 bg-opacity-90 p-8 rounded-lg shadow-2xl w-[450px] border border-gray-700"
+                className="bg-blue-100 p-5 rounded-lg shadow-lg"
             >
                 {inputElements}
                 <div className="text-center">
@@ -107,12 +109,11 @@ export default function Login() {
                         disabled={disabled}
                         onMouseOver={handleMouseOver}
                         btnText={loading ? "Loading..." : "Login"}
-                        className="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-2 rounded-md hover:from-purple-700 hover:to-pink-600 transition-all"
                     />
                 </div>
-                <div className="text-center mt-3 text-sm text-purple-300">
-                    Don't have an account?{" "}
-                    <Link to={"/register"} className="text-pink-400 hover:text-pink-300">
+                <div className="text-center mt-3 text-sm">
+                    Don't have an account ?{" "}
+                    <Link to={"/register"} className="text-blue-900">
                         Register
                     </Link>
                 </div>
