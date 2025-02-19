@@ -10,7 +10,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // to parse form data
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // Define a route handler for the base route
 app.get("/", (req, res) => {
@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 // Use the userRouter for any routes that start with /user
 
-app.use("/", userRouter);
+app.use("/api/users", userRouter);
 
 
 

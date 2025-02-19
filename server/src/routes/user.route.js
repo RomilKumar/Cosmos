@@ -1,11 +1,10 @@
 import express from "express";
 export const userRouter = express.Router();
-import { deleteAccount, getChannelProfile, login, logout, register, sampleUser } from "../controllers/user.controller.js";
+import {  login, logout, register } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middleware/authentication.js";
 
 
-userRouter.get("/sampleusers", sampleUser);
-userRouter.get("/channel/:channelId", getChannelProfile);
+// userRouter.get("/channel/:channelId", getChannelProfile);
 
 
 
@@ -15,7 +14,7 @@ userRouter.post("/register", register);
 
 userRouter.use(verifyJWT);
 
-userRouter.delete("/delete", deleteAccount);
+// userRouter.delete("/delete", deleteAccount);
 
 
 

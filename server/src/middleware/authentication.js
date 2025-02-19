@@ -1,26 +1,34 @@
 import jwt from "jsonwebtoken";
+import { NOT_FOUND } from "../constants/errorCodes.js";
+import { getUser } from "../controllers/user.controller.js";
 
 export const verifyJWT = async (req, res, next) => {
   try {
     // Ensure token is extracted correctly from cookies
     const token = req.cookies?.token;
     if (!token) {
-      return res.status(401).json({ message: "Token missing" });
+      return res.status(NOT_FOUND).json({ message: "Token missing" });
     }
 
-    // Verify the token
     const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+
     if (!decodedToken) {
-      return res.status(403).json({ message: "Token invalid" });
+      return res.status().json({ message: "Token invalid" });
     }
+
+    const user =  await getUser(decodedToken.userId);
+
+    if(!user){
+      return res.status(BAD_REQUEST).json({message: "User not found"});
+    }  
 
     // Store user information in req for further middleware/routes
-    req.user = decodedToken; // Assuming decodedToken contains user info (like id)
+    req.user = user; // Assuming decodedToken contains user info (like id)
 
     next();
   } catch (error) {
     return res
-      .status(403)
+      .status(BAD_REQUEST)
       .json({ message: "Token invalid", error: error.message });
   }
 };
