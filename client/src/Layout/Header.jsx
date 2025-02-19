@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 export default function Header() {
+
     const tabs = [
         { tab: "Home", to: "" },
         { tab: "About", to: "about" },
