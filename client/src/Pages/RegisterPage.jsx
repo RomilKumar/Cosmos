@@ -41,7 +41,7 @@ export default function RegisterPage() {
             Object.entries(inputs).some(
                 ([key, value]) => !value & (key !== "lastName")
             ) ||
-            Object.entries(errors).some(([key, value]) => value!=="")
+            Object.entries(errors).some(([key, value]) => value !== "")
         ) {
             setDisabled(true);
         } else {
@@ -150,87 +150,89 @@ export default function RegisterPage() {
     ));
 
     return (
-        <div className=" h-full flex items-center justify-center">
-            <div>
-                <h2 className="font-semibold text-2xl text-white text-center my-4">
-                    Register
-                </h2>
-                <form
-                    method="POST"
-                    onSubmit={handleSubmit}
-                    className="bg-blue-100 p-5 rounded-lg shadow-lg "
-                >
-                    <div className="flex gap-2">
-                        <div className="my-4">
-                            <div className="relative">
-                                <label
-                                    htmlFor="firstName"
-                                    className="absolute -top-2 left-2 text-sm bg-blue-100 px-1"
-                                >
-                                    <span className="text-red-600">*</span>
-                                    First Name
-                                </label>
+        <div className="relarive">
+            <div className=" h-full flex items-center justify-center">
+                <div>
+                    <h2 className="font-semibold text-2xl text-white text-center my-4">
+                        Register
+                    </h2>
+                    <form
+                        method="POST"
+                        onSubmit={handleSubmit}
+                        className="bg-blue-100 p-5 rounded-lg shadow-lg "
+                    >
+                        <div className="flex gap-2">
+                            <div className="my-4">
+                                <div className="relative">
+                                    <label
+                                        htmlFor="firstName"
+                                        className="absolute -top-2 left-2 text-sm bg-blue-100 px-1"
+                                    >
+                                        <span className="text-red-600">*</span>
+                                        First Name
+                                    </label>
+                                </div>
+                                <input
+                                    type="text"
+                                    name="firstName"
+                                    id="firstName"
+                                    placeholder="Enter First Name"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    required
+                                    className="outline-none border-1 border-gray-700 p-2 rounded-md"
+                                />
+                                {errors.firstName && (
+                                    <div className="text-red-600 text-sm">
+                                        {errors.firstName}
+                                    </div>
+                                )}
                             </div>
-                            <input
-                                type="text"
-                                name="firstName"
-                                id="firstName"
-                                placeholder="Enter First Name"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                required
-                                className="outline-none border-1 border-gray-700 p-2 rounded-md"
-                            />
-                            {errors.firstName && (
+                            <div className="my-4">
+                                <div className="relative">
+                                    <label
+                                        htmlFor="lastName"
+                                        className="absolute -top-2 left-2 text-sm bg-blue-100 px-1"
+                                    >
+                                        <span className="text-red-600">*</span>
+                                        Last Name
+                                    </label>
+                                </div>
+                                <input
+                                    type="text"
+                                    name="lastName"
+                                    id="lastName"
+                                    placeholder="Enter Last Name"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    required
+                                    className="outline-none border-1 border-gray-700 p-2 rounded-md"
+                                />
+                            </div>
+                            {errors.lastName && (
                                 <div className="text-red-600 text-sm">
-                                    {errors.firstName}
+                                    {errors.lastName}
                                 </div>
                             )}
                         </div>
-                        <div className="my-4">
-                            <div className="relative">
-                                <label
-                                    htmlFor="lastName"
-                                    className="absolute -top-2 left-2 text-sm bg-blue-100 px-1"
-                                >
-                                    <span className="text-red-600">*</span>
-                                    Last Name
-                                </label>
-                            </div>
-                            <input
-                                type="text"
-                                name="lastName"
-                                id="lastName"
-                                placeholder="Enter Last Name"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                required
-                                className="outline-none border-1 border-gray-700 p-2 rounded-md"
+                        {inputElements}
+
+                        <div className="m-2">Username = {inputs.userName}</div>
+                        <div className="text-center">
+                            <Button
+                                disabled={disabled}
+                                onMouseOver={handleMouseOver}
+                                btnText={loading ? "Loading..." : "Register"}
                             />
                         </div>
-                        {errors.lastName && (
-                            <div className="text-red-600 text-sm">
-                                {errors.lastName}
-                            </div>
-                        )}
-                    </div>
-                    {inputElements}
-
-                    <div className="m-2">Username = {inputs.userName}</div>
-                    <div className="text-center">
-                        <Button
-                            disabled={disabled}
-                            onMouseOver={handleMouseOver}
-                            btnText={loading ? "Loading..." : "Register"}
-                        />
-                    </div>
-                    <div className="mt-3 text-sm text-center">
-                        Already have an account ?{" "}
-                        <Link to={"/login"} className="text-blue-900">
-                            Login
-                        </Link>
-                    </div>
-                </form>
+                        <div className="mt-3 text-sm text-center">
+                            Already have an account ?{" "}
+                            <Link to={"/login"} className="text-blue-900">
+                                Login
+                            </Link>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     );
