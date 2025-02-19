@@ -6,9 +6,10 @@ import RegisterPage from "./RegisterPage.jsx";
 import SupportPage from "./SupportPage.jsx";
 import ServerErrorPage from "./ServerErrorPage.jsx";
 import BlogPage from "./BlogPage.jsx";
-import NewsPage from "./NewsPage.jsx";
+import EventsPage from "./EventsPage.jsx";
 import GalleryPage from "./GalleryPage.jsx";
 import UpcomingprojectsPage from "./UpcomingprojectsPage.jsx";
+import GetEventPage from "./getEventPage.jsx"; // Import the GetEventPage component
 
 export {
     AboutPage,
@@ -19,7 +20,8 @@ export {
     SupportPage,
     ServerErrorPage,
     BlogPage,
-    NewsPage,
     GalleryPage,
-    UpcomingprojectsPage
+    UpcomingprojectsPage,
+    EventsPage,
+    GetEventPage
 }
