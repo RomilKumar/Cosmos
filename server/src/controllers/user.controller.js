@@ -1,6 +1,9 @@
 import { NOT_FOUND, SERVER_ERROR } from "../../constants/errorCodes.js";
+import { v4 as uuid } from "uuid";
 import { User } from "../models/user.model.js";
 import { generateToken } from "../utils/generateToken.js";
+import { BAD_REQUEST } from "../constants/errorCodes.js";
+import { COOKIE_OPTIONS } from "../constants/cookieOptions.js";
 
 const getUser = async (searchInput) => {
     try {
@@ -23,123 +26,122 @@ const getUser = async (searchInput) => {
 };
 
 const login = async (req, res) => {
-    const { searchInput, password } = req.body;
     try {
-        const user = await getUser(email);
-
-        if (user) {
-            const token = generateToken(user.user_id);
-
-            // Set token in an HTTP-only cookie
-            res.cookie("token", token, {
-                httpOnly: true, // Prevents JavaScript access
-                secure: process.env.NODE_ENV === "production", // Use secure cookies in production
-                sameSite: "strict",
-                maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-            });
-
-            res.json({
-                _id: user._id,
-                username: user.username,
-                email: user.email,
-            });
-        } else {
-            res.status(401).json({ message: "Invalid email or password" });
+        const { searchinput, password } = req.body;
+        if (!searchinput || !password) {
+            return res.status(BAD_REQUEST).json({ message: "missing Fields" });
         }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+
+        const user = await getUser(searchinput);
+        if (!user) {
+            return res.status(NOT_FOUND).json({
+                message: "user with this email or username does not exist ",
+            });
+        }
+
+        const isValid = await bcrypt.compareSync(password, user.user_password);
+        if (!isValid) {
+            return res
+                .status(BAD_REQUEST)
+                .json({ message: "wrong credentials" });
+        }
+        //token fn generates a promise so frst let it resolve
+        const token = await generateToken(user);
+
+        await User.updateOne(
+            { user_id: user.user_id },
+            {
+                $set: {
+                    user_token: token,
+                },
+            }
+        );
+        const { user_token, user_password, ...loggedinUser } = user;
+        return res
+            .status(OK)
+            .cookie("token", token, {
+                ...COOKIE_OPTIONS,
+                maxAge: process.env.TOKEN_MAXAGE,
+            })
+            .json(loggedinUser); // frst cookie will be sent!!(bcz .json(data) is the final response)
+    } catch (err) {
+        return res.status(SERVER_ERROR).json({
+            error: err.message,
+            message: "something went wrong while logging in the user",
+        });
     }
 };
 
 const register = async (req, res) => {
-    const { username, firstname, lastname, email, password, contact } =
-        req.body;
     try {
-        const userExists = await User.findOne({ email });
-        if (userExists) {
-            return res.status(400).json({ message: "User already exists" });
-        }
-
-        const user = await User.create({
-            username,
-            firstname,
-            lastname,
-            email,
+        const {
+            userName,
+            firstName,
+            lastName,
             password,
+            email,
+            role,
             contact,
+        } = req.body;
+
+        const data = {
+            userName,
+            firstName,
+            lastName,
+            password,
+            email,
+            role,
+            contact,
+        };
+
+        //empty field checks //pending optimised
+        if (
+            Object.entries(data).some(
+                ([key, value]) => !value && key !== "lastname"
+            )
+        ) {
+            return res.status(BAD_REQUEST).json({ message: "missing fileds" });
+        }
+
+        const existingUser = await getUser(userName);
+        if (existingUser) {
+            return res
+                .status(BAD_REQUEST)
+                .json({ message: "user already exists" });
+        }
+        const avatar = process.env.AVATAR_COMMON_URL;
+        console.log(uuid());
+        const user = await User.create({
+            user_id: uuid(),
+            user_name: userName,
+            first_name: firstName,
+            last_name: lastName,
+            user_password: password,
+            user_avatar: avatar,
+            user_email: email,
+            user_role: role,
+            user_contact: contact,
         });
+        await user.save(); // pre hook is applied so we are saving it
 
-        if (user) {
-            const token = generateToken(user._id);
+        const { user_password, ...createdUser } = user.toObject();
 
-            // Set token in an HTTP-only cookie
-            res.cookie("token", token, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === "production",
-                sameSite: "strict",
-                maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-            });
-
-            res.status(201).json({
-                _id: user._id,
-                username: user.username,
-                email: user.email,
-            });
-        } else {
-            res.status(400).json({ message: "Invalid user data" });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+        return res.status(OK).json(createdUser);
+    } catch (err) {
+        return res.status(SERVER_ERROR).json({
+            message: "Something went wrong while registering user",
+            error: err.message,
+        });
     }
 };
 
-const logout = (req, res) => {
-    res.clearCookie("token");
-    res.json({ message: "Logged out successfully" });
-};
-
-const deleteAccount = async (req, res) => {
-    try {
-        const user = await User.findByIdAndDelete(req.params.id);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        res.status(200).json({ message: "User deleted successfully" });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const getChannelProfile = async (req, res) => {
-    try {
-        const user = await User.findById(req.params.id);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        res.status(200).json(user);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const sampleUser = async (req, res) => {
-    let sampleuser = new User({
-        username: "sampleuser",
-        email: "abc@gmail.com",
-        password: "password",
-    });
-
-    await sampleuser.save();
-    console.log(sampleuser);
-    res.send(sampleuser);
-};
+const logout = async () => {};
 
 export {
-    sampleUser,
     getUser,
     login,
     register,
     logout,
-    deleteAccount,
-    getChannelProfile,
+    // deleteAccount,
+    // getChannelProfile,
 };
