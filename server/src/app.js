@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 // Use the userRouter for any routes that start with /user
 
-app.use("/", userRouter);
+app.use("/api/users", userRouter);
 
 
 
