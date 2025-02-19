@@ -1,6 +1,8 @@
 import { NOT_FOUND, SERVER_ERROR } from "../../constants/errorCodes.js";
+import { v4 as uuid } from "uuid";
 import { User } from "../models/user.model.js";
 import { generateToken } from "../utils/generateToken.js";
+import { BAD_REQUEST } from "../constants/errorCodes.js";
 import { COOKIE_OPTIONS } from "../constants/cookieOptions.js";
 
 const getUser = async (searchInput) => {
@@ -82,9 +84,23 @@ const register = async (req, res) => {
             contact,
         } = req.body;
 
+        const data = {
+            userName,
+            firstName,
+            lastName,
+            password,
+            email,
+            role,
+            contact,
+        };
+
         //empty field checks //pending optimised
-        if (!userName || !firstName || !contact || !email || !password) {
-            return res.status(BAD_REQUEST).json({ message: "missing fields" });
+        if (
+            Object.entries(data).some(
+                ([key, value]) => !value && key !== "lastname"
+            )
+        ) {
+            return res.status(BAD_REQUEST).json({ message: "missing fileds" });
         }
 
         const existingUser = await getUser(userName);
@@ -93,27 +109,20 @@ const register = async (req, res) => {
                 .status(BAD_REQUEST)
                 .json({ message: "user already exists" });
         }
-
         const avatar = process.env.AVATAR_COMMON_URL;
-        const userAvatar =
-            gender.toLowerCase() === "male"
-                ? avatar + `boy?${userName}`
-                : gender.toLowerCase() === "female"
-                ? avatar + `girl?${userName}`
-                : "";
-
+        console.log(uuid());
         const user = await User.create({
             user_id: uuid(),
             user_name: userName,
             first_name: firstName,
             last_name: lastName,
             user_password: password,
-            user_avatar: userAvatar,
-            user_gender: gender,
+            user_avatar: avatar,
             user_email: email,
             user_role: role,
+            user_contact: contact,
         });
-        await user.save();
+        await user.save(); // pre hook is applied so we are saving it
 
         const { user_password, ...createdUser } = user.toObject();
 

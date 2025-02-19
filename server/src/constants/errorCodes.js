@@ -6,4 +6,5 @@ export {
     OK,
     NOT_FOUND,
     SERVER_ERROR,
+    BAD_REQUEST
 }
