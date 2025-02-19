@@ -24,6 +24,7 @@ export default function RegisterPage() {
         contact: "",
         password: "",
         confirmPassword: "",
+        role: "participant", // default role is participant
     });
 
     const navigate = useNavigate();
@@ -60,7 +61,10 @@ export default function RegisterPage() {
             setLoading(true);
             setDisabled(true);
             setErrors(null);
-            navigate("/");
+
+            // Proceed to home page for both participants and organizers
+            navigate("/"); // Redirect to home page after registration
+
             console.log({
                 firstName: inputs.firstName,
                 lastName: inputs.lastName,
@@ -69,6 +73,7 @@ export default function RegisterPage() {
                 contact: inputs.contact,
                 password: inputs.password,
                 confirmPassword: inputs.confirmPassword,
+                role: inputs.role,
             });
         } catch (err) {
             console.log(err);
@@ -107,7 +112,7 @@ export default function RegisterPage() {
         {
             type: "password",
             name: "password",
-            id: "passwprd",
+            id: "password", // Corrected here
             placeholder: "Enter password",
             label: "Password",
             required: true,
@@ -150,8 +155,8 @@ export default function RegisterPage() {
     ));
 
     return (
-        <div className="relarive">
-            <div className=" h-full flex items-center justify-center">
+        <div className="relative">
+            <div className="h-full flex items-center justify-center">
                 <div>
                     <h2 className="font-semibold text-2xl text-white text-center my-4">
                         Register
@@ -159,7 +164,7 @@ export default function RegisterPage() {
                     <form
                         method="POST"
                         onSubmit={handleSubmit}
-                        className="bg-blue-100 p-5 rounded-lg shadow-lg "
+                        className="bg-blue-100 p-5 rounded-lg shadow-lg"
                     >
                         <div className="flex gap-2">
                             <div className="my-4">
@@ -217,7 +222,39 @@ export default function RegisterPage() {
                         </div>
                         {inputElements}
 
-                        <div className="m-2">Username = {inputs.userName}</div>
+                        {/* Radio Buttons for role selection */}
+                        <div className="my-4">
+                            <div className="relative">
+                                <label className="text-sm text-blue-900">
+                                    <span className="text-red-600">*</span>
+                                    Register as:
+                                </label>
+                            </div>
+                            <div className="flex gap-4">
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="role"
+                                        value="participant"
+                                        checked={inputs.role === "participant"}
+                                        onChange={handleChange}
+                                    />
+                                    Participant
+                                </label>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="role"
+                                        value="organizer"
+                                        checked={inputs.role === "organizer"}
+                                        onChange={handleChange}
+                                    />
+                                    Organizer
+                                </label>
+                            </div>
+                        </div>
+
+            
                         <div className="text-center">
                             <Button
                                 disabled={disabled}
