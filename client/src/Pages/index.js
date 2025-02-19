@@ -9,7 +9,11 @@ import BlogPage from "./BlogPage.jsx";
 import EventsPage from "./EventsPage.jsx";
 import GalleryPage from "./GalleryPage.jsx";
 import UpcomingprojectsPage from "./UpcomingprojectsPage.jsx";
+
+import CreateEvent from "./CreateEvent.jsx";
+
 import GetEventPage from "./getEventPage.jsx"; // Import the GetEventPage component
+
 
 export {
     AboutPage,
@@ -22,6 +26,10 @@ export {
     BlogPage,
     GalleryPage,
     UpcomingprojectsPage,
+
+    CreateEvent
+
     EventsPage,
     GetEventPage
+
 }
