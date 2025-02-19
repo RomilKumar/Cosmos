@@ -16,10 +16,11 @@ import {
     RegisterPage,
     SupportPage,
     ServerErrorPage,
-    NewsPage,
+    EventsPage,
     BlogPage,
     GalleryPage,
     UpcomingprojectsPage,
+    GetEventPage
 } from "./Pages/index.js";
 
 
@@ -33,10 +34,11 @@ const router = createBrowserRouter(
             <Route path="about" element={<AboutPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="server-error" element={<ServerErrorPage />} />
-            <Route path="news" element={<NewsPage />} />
+            <Route path="events" element={<EventsPage />} />
             <Route path="blogs" element={<BlogPage />} />
             <Route path="gallery" element={<GalleryPage />} />
             <Route path="upcoming-projects" element={<UpcomingprojectsPage />} />
+            <Route path="getEvent" element={<GetEventPage/>} />
         </Route>
     )
 );
