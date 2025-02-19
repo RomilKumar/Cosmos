@@ -22,7 +22,7 @@ import {
     UpcomingprojectsPage,
 } from "./Pages/index.js";
 
-//Components to be written now!!!
+
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
