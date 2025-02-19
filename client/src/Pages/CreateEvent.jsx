@@ -39,10 +39,10 @@ export default function CreateEvent() {
     };
 
     return (
-        <div className="bg-gray-100 py-12 min-h-screen flex items-center justify-center">
-            <div className="max-w-4xl w-full bg-white p-8 rounded-lg shadow-lg">
-                <h1 className="text-center text-3xl font-semibold text-blue-600 mb-8">Create Event</h1>
-                <form onSubmit={handleSubmit} className="space-y-8">
+        <div className="create-event-page bg-gray-100 min-h-screen flex items-center justify-center py-8">
+            <div className="w-full max-w-6xl bg-white p-8 rounded-lg shadow-lg">
+                <h1 className="text-center text-5xl font-semibold text-blue-600 mb-8">CREATE YOUR EVENT</h1>
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Event Title */}
                     <div className="form-group">
                         <label htmlFor="title" className="block text-lg text-gray-700 font-medium">Event Title</label>
@@ -54,7 +54,7 @@ export default function CreateEvent() {
                             onChange={handleChange}
                             required
                             placeholder="Enter event title"
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -68,7 +68,7 @@ export default function CreateEvent() {
                             onChange={handleChange}
                             required
                             placeholder="Describe the event"
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -81,7 +81,7 @@ export default function CreateEvent() {
                             value={formData.type}
                             onChange={handleChange}
                             required
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="">Select Event Type</option>
                             <option value="Conference">Conference</option>
@@ -102,7 +102,7 @@ export default function CreateEvent() {
                             value={formData.date}
                             onChange={handleChange}
                             required
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -116,7 +116,7 @@ export default function CreateEvent() {
                             value={formData.time}
                             onChange={handleChange}
                             required
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -131,7 +131,7 @@ export default function CreateEvent() {
                             onChange={handleChange}
                             required
                             placeholder="Enter event location"
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -146,7 +146,7 @@ export default function CreateEvent() {
                             onChange={handleChange}
                             required
                             placeholder="Enter max capacity"
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -158,7 +158,7 @@ export default function CreateEvent() {
                             name="image"
                             id="image"
                             onChange={handleImageChange}
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -172,7 +172,7 @@ export default function CreateEvent() {
                             value={formData.registrationLink}
                             onChange={handleChange}
                             placeholder="Enter registration link (optional)"
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -187,7 +187,7 @@ export default function CreateEvent() {
                             onChange={handleChange}
                             required
                             placeholder="Enter contact info"
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -201,7 +201,7 @@ export default function CreateEvent() {
                             value={formData.ticketPrice}
                             onChange={handleChange}
                             placeholder="Enter ticket price"
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -213,7 +213,7 @@ export default function CreateEvent() {
                             id="status"
                             value={formData.status}
                             onChange={handleChange}
-                            className="w-full p-4 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="draft">Draft</option>
                             <option value="published">Published</option>
@@ -221,8 +221,8 @@ export default function CreateEvent() {
                     </div>
 
                     {/* Submit Button */}
-                    <div className="form-group text-center">
-                        <Button btnText="Create Event" className="w-full bg-blue-600 text-white p-4 rounded-md mt-6 hover:bg-blue-700" />
+                    <div className="form-group text-center col-span-2">
+                        <Button btnText="Create Event" className="w-full bg-blue-600 text-white p-3 rounded-md mt-4 hover:bg-blue-700" />
                     </div>
                 </form>
             </div>

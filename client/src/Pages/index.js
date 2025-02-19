@@ -9,6 +9,7 @@ import BlogPage from "./BlogPage.jsx";
 import NewsPage from "./NewsPage.jsx";
 import GalleryPage from "./GalleryPage.jsx";
 import UpcomingprojectsPage from "./UpcomingprojectsPage.jsx";
+import CreateEvent from "./CreateEvent.jsx";
 
 export {
     AboutPage,
@@ -21,5 +22,6 @@ export {
     BlogPage,
     NewsPage,
     GalleryPage,
-    UpcomingprojectsPage
+    UpcomingprojectsPage,
+    CreateEvent
 }

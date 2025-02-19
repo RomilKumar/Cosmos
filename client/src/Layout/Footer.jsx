@@ -52,7 +52,7 @@ export default function Footer() {
 
                 {/* 1/3 width for the third section (aligning the text to the left like div 2) */}
                 <div className="w-1/3 pr-8">
-                    <p className="text-gray-400 text-2xl">Follow GALAXIFY</p>
+                    <p className="text-gray-400 text-2xl">Follow EVENTIFIER</p>
                     <div className="flex space-x-6 mt-2">
                         <a
                             href="https://facebook.com"

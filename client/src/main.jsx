@@ -20,6 +20,7 @@ import {
     BlogPage,
     GalleryPage,
     UpcomingprojectsPage,
+    CreateEvent,
 } from "./Pages/index.js";
 
 
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
             <Route path="blogs" element={<BlogPage />} />
             <Route path="gallery" element={<GalleryPage />} />
             <Route path="upcoming-projects" element={<UpcomingprojectsPage />} />
+            <Route path="create-event" element={<CreateEvent />} />
         </Route>
     )
 );
