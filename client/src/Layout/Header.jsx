@@ -7,7 +7,7 @@ export default function Header() {
             </div>
 
             {/* Center section for navigation items */}
-            <nav className="flex space-x-4 h-full items-center">
+            <nav className="flex space-x-4 h-full items-center ml-6">
                 <a
                     href="Home"
                     className="text-white hover:text-gray-400 text-lg font-medium border-2 border-gray-400 px-3 py-1.5 rounded-none flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:bg-gray-800 whitespace-nowrap m-0"
@@ -60,14 +60,13 @@ export default function Header() {
 
             {/* Right section for buttons (Log In / Sign Up) */}
             <div className="flex space-x-0 pr-6">
-            <button className="text-white bg-gray-700 px-3 py-1.5 rounded-none hover:bg-gray-500 transition-all   hover:scale-105 hover:shadow-lg">
-                <p className="text-lg font-semibold">Log In</p>
-            </button>
+                <button className="text-white bg-gray-700 px-3 py-1.5 rounded-none hover:bg-gray-500 transition-all hover:scale-105 hover:shadow-lg">
+                    <p className="text-lg font-semibold">Log In</p>
+                </button>
 
-            <button className="text-white bg-pink-700 px-3 py-1.5 rounded-none hover:bg-pink-500 transition-all hover:scale-105 hover:shadow-lg">
-                <p className="text-lg font-semibold">Sign Up</p>
-            </button>
-
+                <button className="text-white bg-pink-700 px-3 py-1.5 rounded-none hover:bg-pink-500 transition-all hover:scale-105 hover:shadow-lg">
+                    <p className="text-lg font-semibold">Sign Up</p>
+                </button>
             </div>
         </header>
     );
